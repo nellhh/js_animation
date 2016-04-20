@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}	
+	ul,li{
+		list-style: none;
+	}
+	ul li{
+		width: 200px;
+		height: 100px;
+		background: yellow;
+		margin-bottom: 20px;
+		border: 2px solid #000;
+	}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var ali=document.getElementsByTagName('li');//1.获取li
+			for(var i=0;i<ali.length;i++){//2.建立一个for循环
+				ali[i].timer=null;//需要给每个li定时器都加上编号，则timer=obj.timer
+				ali[i].onmouseover=function(){//3.建立一个鼠标放上去就变动的函数
+					startMove(this,400);//4.开始移动，一个值为这个目标，第二个值为目标值
+				}
+
+				ali[i].onmouseout=function(){//5.当鼠标离开的时候
+					startMove(this,200);//6.目标值变回200
+				}
+			} 
+		}
+		//var timer=null;//先设置时间空（定时器为公用的，需要重新弄一个）
+		function startMove(obj,itarget){//给startMove设置参数，第一个为目标，和目标值
+			clearInterval(obj.timer);//先关掉一个定时器
+			obj.timer=setInterval(function(){//然后再开一个定时器
+				var speed=(itarget-obj.offsetWidth)/8;//定义一个速度=(目标值-当前的目标的宽)/8
+				var speed=speed>0?Math.ceil(speed):Math.floor(speed);//需要给速度取整；
+				if(obj.offsetWidth==itarget){//用if，如果我的当前值等于目标值
+					clearInterval(obj.timer);//那么就需要清除定时器
+				}else{
+					obj.style.width=obj.offsetWidth+speed+'px';//否则就继续执行函数，加宽
+				} 
+			},30)
+		}
+	</script>
+</head>
+<body>
+<ul>
+	<li style="width: 200px"></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

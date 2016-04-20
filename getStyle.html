@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		background: red;
+		border: 1px solid #000;	
+	}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			startMove();		
+		}
+		function startMove(){
+			setInterval(function(){
+				var adiv=document.getElementById('div1');
+				//alert(adiv.offsetWidth);//202
+				//adiv.style.width=adiv.offsetWidth-1+'px';//201 又加了border+2=203->203-1=202->202+2=204->204-1=203....；
+				//adiv.style.width=adiv.offsetWidth-2+'px';//200 又加了border+2=202；->202-2=200->200+2=202;
+
+
+				//如果要实现div缩小 则。。。用getStyle
+				adiv.style.width=parseInt(getStyle(adiv,'width'))-1+'px';
+			},30);			
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];//ie
+			}else{
+				return getComputedStyle(obj,false)[attr];//ff
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
