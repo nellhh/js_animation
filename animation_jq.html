@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#div1 p{
+		margin: 5px;
+	}
+	#div1{
+		width: 300px;
+		height: 300px;
+		border: 1px solid #ccc;
+		margin: 10px auto;
+		background: #f4f4f4;
+	}
+	#div1 a{
+		display: inline-block;
+		width: 58px;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		background: #fff;
+		text-align: center;    
+		margin: 10px 17px;
+		position: relative;
+		padding-top: 40px;
+		color: #9c9c9c;
+		font-size: 12px;
+		text-decoration: none;
+		overflow: hidden;
+	}
+	#div1 a i{
+		position: absolute;
+		top: 10px;
+		left: 0;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		filter: alpha(opacity=100);
+		opacity: 1;
+	}	
+	#div1 a:hover{
+		color: #f00;
+	}	
+	#div1 img{
+		border: none;
+	}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#div1 a').mouseenter(function(){//引入div1中的a
+				$(this).find('i').animate({top:'-10px',opacity:'0'},300,function(){//当前a下面找到i元素
+					$(this).css({top:'30px'});
+					$(this).animate({top:'10px',opacity:'1'},200);
+				});
+			})
+		})
+	</script>
+</head>
+<body>
+<div id="div1">
+	<a href="#"><i><img src="images/cp.jpg"></i><p>彩票</p></a>
+	<a href="#"><i><img src="images/movie.jpg"></i><p>电影</p></a>
+	<a href="#"><i><img src="images/music.jpg"></i><p>音乐</p></a>
+	<a href="#"><i><img src="images/shuidian.jpg"></i><p>水电煤</p></a>
+	<a href="#"><i><img src="images/lc.jpg"></i><p>理财</p></a>
+	<a href="#"><i><img src="images/wm.jpg"></i><p>外卖</p></a>
+	<a href="#"><i><img src="images/trip.jpg"></i><p>旅行</p></a>
+</div>
+</body>
+</html>

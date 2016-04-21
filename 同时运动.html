@@ -16,29 +16,21 @@
 		background: yellow;
 		margin-bottom: 20px;
 		border: 2px solid #000;
-		opacity: .3;
+		opacity: 0.3;
 		filter: alpha(opacity:30);
 	}
 	</style>
-	<script type="text/javascript" src='js/move.js'></script>
+	<script type="text/javascript" src='js/move1.js'></script>
 	<script type="text/javascript">
 		window.onload=function(){
 			var oli=document.getElementById('li1');
 			oli.onmouseover=function(){
-				startMove(oli,'width',400,function(){
-					startMove(oli,'height',200,function(){
-						startMove(oli,'opacity',100);
-					});
-				});
+				startMove(oli,{width:400,height:200,opacity:100});
+			}
+			oli.onmouseout=function(){
+				startMove(oli,{width:200,height:100,opacity:30});
 			}
 
-			oli.onmouseout=function(){
-				startMove(oli,'opacity',30,function(){
-					startMove(oli,'height',100,function(){
-						startMove(oli,'width',200);
-					});
-				});
-			}
 		}
 	</script>
 
